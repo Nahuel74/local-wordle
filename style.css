@@ -35,7 +35,7 @@ td {
   cursor: pointer;
 }
 
-.disable-row td {
+.disabled-row td {
   border: 2px solid rgb(95, 95, 95);
 }
 

@@ -17,35 +17,35 @@
                 <td class='cell empty-cell'></td>
                 <td class='cell empty-cell'></td>
             </tr>
-            <tr class='row disable-row'>
+            <tr class='row disabled-row'>
                 <td class='cell empty-cell'></td>
                 <td class='cell empty-cell'></td>
                 <td class='cell empty-cell'></td>
                 <td class='cell empty-cell'></td>
                 <td class='cell empty-cell'></td>
             </tr>
-            <tr class='row disable-row'>
+            <tr class='row disabled-row'>
                 <td class='cell empty-cell'></td>
                 <td class='cell empty-cell'></td>
                 <td class='cell empty-cell'></td>
                 <td class='cell empty-cell'></td>
                 <td class='cell empty-cell'></td>
             </tr>
-            <tr class='row disable-row'>
+            <tr class='row disabled-row'>
                 <td class='cell empty-cell'></td>
                 <td class='cell empty-cell'></td>
                 <td class='cell empty-cell'></td>
                 <td class='cell empty-cell'></td>
                 <td class='cell empty-cell'></td>
             </tr>
-            <tr class='row disable-row'>
+            <tr class='row disabled-row'>
                 <td class='cell empty-cell'></td>
                 <td class='cell empty-cell'></td>
                 <td class='cell empty-cell'></td>
                 <td class='cell empty-cell'></td>
                 <td class='cell empty-cell'></td>
             </tr>
-            <tr class='row disable-row'>
+            <tr class='row disabled-row'>
                 <td class='cell empty-cell'></td>
                 <td class='cell empty-cell'></td>
                 <td class='cell empty-cell'></td>

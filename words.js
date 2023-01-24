@@ -51,3 +51,11 @@ const words = [
     'mecen', 'meces', 'mecés', 'mediá', 'memes', 'menes', 'mentá', 'menés', 'menús', 'meras', 'merco', 'mercó', 'meros', 'merás', 'mesas', 'mesen',
     'meses'
 ]
+
+function pickWord(){
+    return Math.floor(Math.random() * 800);
+}
+
+const realWord = words[pickWord()]
+
+console.log(realWord)
