@@ -1,47 +1,71 @@
 const cells = document.querySelectorAll('.cell')
 const rows = document.querySelectorAll('.row')
+const letters = document.querySelectorAll('.letter')
 
 for (let i = 0; i < cells.length; i++) {
     cells[i].tabIndex = i;
+}
+
+function updateLetter(letters, text, i, status){
+    for (let j = 0; j < letters.length; j++){
+        if (letters[j].innerHTML.toLowerCase() == text[i].toLowerCase()){
+            if (status == 'correct'){ 
+                letters[j].style.backgroundColor = 'rgb(45, 104, 45)'
+            }
+            else if (status == 'semi-correct' && letters[j].style.backgroundColor != 'rgb(45, 104, 45)'){
+                letters[j].style.backgroundColor = 'rgb(187 189 48)'
+            }
+            else if (status == 'wrong'){
+                letters[j].style.backgroundColor = 'rgb(255 0 0)'
+            }
+        }
+    }
 }
 
 function changeRow(rows, activeRow){
 
     for(let i = 0; i < rows.length; i++){
         if (rows[i].className == activeRow.className){
-            console.log(i)
-            activeRow.className = 'row disabled-row'
-            rows[i+1].className = 'row active-row'
+            if(rows[i+1]) {
+                activeRow.className = 'row disabled-row'
+                rows[i+1].className = 'row active-row'
+                rows[i+1].children[0].focus()
+            }
             break
         }
     }
-
 }
 
-function checkWord(text, realWord, activeRow, rows){
+function checkWord(text, realWord, activeRow, rows, letters){
 
     text = text.split('')
     realWord = realWord.split('')
 
     for (let i = 0; i < text.length; i++){
-        for (let j = 0; j < realWord.length; j++){
-            if (text[i] == realWord[i]){
+        for (let j = 0; j < text.length; j++){
+            if (text[i] === realWord[i]){
+                let status = 'correct'
                 activeRow.children[i].style.backgroundColor = 'rgb(45, 104, 45)'
+                updateLetter(letters, text, i, status)
                 break
             }
             else if (text[i] == realWord[j] && j != i){
+                let status = 'semi-correct'
                 activeRow.children[i].style.backgroundColor = 'rgb(187 189 48)'
+                updateLetter(letters, text, i, status)
                 break
             }
             else {
+                let status = 'wrong'
                 activeRow.children[i].style.backgroundColor = 'rgb(77, 77, 77)'
+                updateLetter(letters, text, i, status)
             }
         }
     }
     changeRow(rows, activeRow)
 }
 
-function validateWord(realWord, rows){
+function validateWord(realWord, rows, letters){
     let activeRow = document.querySelector('.active-row')
 
     let text = activeRow.textContent.replace(/\s+/g, "")
@@ -51,11 +75,17 @@ function validateWord(realWord, rows){
         return
     }
     else{
-        checkWord(text, realWord, activeRow, rows)
+        checkWord(text, realWord, activeRow, rows, letters)
+    }
+    if (text == realWord){
+        alert('Correcto!')
+    }
+    else if (!activeRow.nextElementSibling && text != realWord){
+        alert(`La palabra era ${realWord}`)
     }
 }
 
-function writeCell(cells, key, realWord, rows){
+function writeCell(cells, key, realWord, rows, letters){
 
     let currentIndex = document.activeElement.tabIndex
     let cell = cells[currentIndex]
@@ -67,20 +97,19 @@ function writeCell(cells, key, realWord, rows){
                 cell.nextElementSibling.focus()
             }
         }
-        else if (key.keyCode === 8){
+        else if (key.keyCode === 8 && cell.innerHTML != ''){
             cell.innerHTML = ''
-
-            if (cell.previousElementSibling){
-                cell.previousElementSibling.focus()
-            }
+        }
+        else if (key.keyCode === 8 && cell.innerHTML == '' && cell.previousElementSibling){
+            cell.previousElementSibling.focus()
         }
         else if (key.keyCode === 13){
-            validateWord(realWord, rows)
+            validateWord(realWord, rows, letters)
         }
     }
 }
 
 document.onkeydown = function (key) {
-    writeCell(cells, key, realWord, rows)
+    writeCell(cells, key, realWord, rows, letters)
 }
 
