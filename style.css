@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Passion+One&display=swap');
+body {
+    background-color: rgb(77, 77, 77);
+    color: rgb(255, 255, 255);
+    text-align: center;
+    margin-top: 5em;
+}
+.container{
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 15px;
+}
+  
+td {
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 8px;
+    padding: 0;
+    margin: 10px;
+    width: 5rem;
+    height: 5rem;
+
+    font-size: 4rem;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Passion One', cursive;
+    user-select: none;
+}
+
+.cell {
+  cursor: pointer;
+}
+
+.disable-row td {
+  border: 2px solid rgb(95, 95, 95);
+}
+
+.active-row td:focus{
+  border: 2px solid rgb(103, 205, 245);
+}
