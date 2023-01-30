@@ -2,9 +2,7 @@ const cells = document.querySelectorAll('.cell')
 const rows = document.querySelectorAll('.row')
 const letters = document.querySelectorAll('.letter')
 
-for (let i = 0; i < cells.length; i++) {
-    cells[i].tabIndex = i;
-}
+cells.forEach((cell, i) => cell.tabIndex = i);
 
 function updateLetter(letters, text, i, status){
     for (let j = 0; j < letters.length; j++){
@@ -78,10 +76,14 @@ function validateWord(realWord, rows, letters){
         checkWord(text, realWord, activeRow, rows, letters)
     }
     if (text == realWord){
-        alert('Correcto!')
+        if(confirm(`¡Correcto! \n La palabra era ${realWord} \n ¿Volver a jugar?`)){
+            location.reload();
+        }
     }
     else if (!activeRow.nextElementSibling && text != realWord){
-        alert(`La palabra era ${realWord}`)
+        if(confirm(`La palabra era ${realWord} \n ¿Volver a jugar?`)){
+            location.reload();
+        }
     }
 }
 
